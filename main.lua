@@ -109,7 +109,7 @@ local function stealgokart()
         repeat task.wait(0.1) until game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.LapCounter.SurfaceGui.TrackNumber.Text == "GO"
         task.wait(2.5)
         game:GetService("ReplicatedStorage").Remotes.ChangeSetting:FireServer("Suspension", false)
-        game.StarterGui:SetCore("ChatMakeSystemMessage", {Text = "[ClockHub] If the gokart gets stuck, please disable suspension.", Color = Color3.fromRGB( 255,0,0 ), Font = Enum.Font.Arial, FontSize = Enum.FontSize.Size24})
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {Text = "[clock.lua] If the gokart gets stuck, please disable suspension.", Color = Color3.fromRGB( 255,0,0 ), Font = Enum.Font.Arial, FontSize = Enum.FontSize.Size24})
         local main = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass
         for i = 1,4 do
             task.wait(0.5)
@@ -216,7 +216,7 @@ end
 if getgenv().infjump == nil then
     game:GetService("UserInputService").JumpRequest:connect(function()
     	if getgenv().infjump == true then
-    		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+            game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
     	end
     end)
 end
@@ -272,7 +272,7 @@ Shop:CreateToggle({Name = "Teleport To All Cashier Spots [WORKS, BUGGY]",Current
     while getgenv().autocashier == true do
         local success,errString = pcall(tptoregisters)
         if errString ~= nil then
-            print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+            print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
         end
         task.wait()
     end
@@ -285,7 +285,7 @@ Shop:CreateToggle({Name = "Clean The Store Automatically",CurrentValue = false,C
     while getgenv().autocleantoggle == true do
         local success,errString = pcall(cleanthestore)
         if errString ~= nil then
-            print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+            print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
         end
         task.wait()
     end
@@ -298,7 +298,7 @@ Shop:CreateToggle({Name = "Arrest Robbers Automatically",CurrentValue = false,Ca
     while getgenv().autoarresttoggle == true do
         local success,errString = pcall(arrestrobbers)
         if errString ~= nil then
-            print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+            print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
         end
         task.wait()
     end
@@ -313,7 +313,7 @@ end})
 Annoy:CreateButton({Name = "Refresh Players",Interact = "Button",Callback = function()
     local success,errString = pcall(refplayertable)
     if errString ~= nil then
-        print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+        print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
     end
     DropdownPlayers:Refresh({unpack(PlayerTable)},"Re-select a player...")
 end})
@@ -323,7 +323,7 @@ Annoy:CreateToggle({Name = "Toggle Annoying",CurrentValue = false,Callback = fun
     while getgenv().annoytoggle == true do
         local success,errString = pcall(annoyfunction)
         if errString ~= nil then
-            print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+            print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
         end
         task.wait()
     end
@@ -348,7 +348,7 @@ end})
 Gokart:CreateButton({Name = "Start",Interact = "Button",Callback = function()
     local success,errString = pcall(startgokart)
     if errString ~= nil then
-        print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+        print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
     end
 end})
 
@@ -357,7 +357,7 @@ Gokart:CreateSection("Get a free gokart below!")
 Gokart:CreateButton({Name = "Steal Gokart",Interact = "Button",Callback = function()
     local success,errString = pcall(stealgokart)
     if errString ~= nil then
-        print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+        print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
     end
 end})
 
@@ -369,7 +369,7 @@ if not game:GetService("Workspace").PlayerVehicles:FindFirstChild("Vehicle_"..ga
             game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Config.MaxSpeed.Value = Value
         end)
         if errString ~= nil then
-            print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+            print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
         end
     end})
 
@@ -378,7 +378,7 @@ if not game:GetService("Workspace").PlayerVehicles:FindFirstChild("Vehicle_"..ga
             game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Config.Power.Value = Value
         end)
         if errString ~= nil then
-            print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+            print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
         end
     end})
 
@@ -387,7 +387,7 @@ if not game:GetService("Workspace").PlayerVehicles:FindFirstChild("Vehicle_"..ga
             game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Config.BrakePower.Value = Value
         end)
         if errString ~= nil then
-            print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+            print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
         end
     end})
 else
@@ -396,7 +396,7 @@ else
             game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Config.MaxSpeed.Value = Value
         end)
         if errString ~= nil then
-            print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+            print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
         end
     end})
 
@@ -405,7 +405,7 @@ else
             game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Config.Power.Value = Value
         end)
         if errString ~= nil then
-            print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+            print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
         end
     end})
 
@@ -414,7 +414,7 @@ else
             game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Config.BrakePower.Value = Value
         end)
         if errString ~= nil then
-            print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+            print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
         end
     end})
 end
@@ -445,7 +445,7 @@ Misc:CreateToggle({Name = "Toggle RGB Store",CurrentValue = false,Callback = fun
         if rainbowisrunning ~= true then
             local success,errString = pcall(rainbowfunction)
             if errString ~= nil then
-                print("[Clock Hub] Did the script run fully:",success,"  Error:" , errString)
+                print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
             end
             task.wait()
         end
