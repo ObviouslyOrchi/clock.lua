@@ -271,7 +271,7 @@ end})
 
 Shop:CreateSection("You no longer need Cashiers!")
 
-Shop:CreateToggle({Name = "Teleport To All Cashier Spots [WORKS, BUGGY]",CurrentValue = false,Callback = function(Value)
+Shop:CreateToggle({Name = "Teleport To All Cashier Spots",CurrentValue = false,Callback = function(Value)
     getgenv().autocashier = Value
     while getgenv().autocashier == true do
         local success,errString = pcall(tptoregisters)
