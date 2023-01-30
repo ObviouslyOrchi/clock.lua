@@ -87,34 +87,38 @@ local function startgokart()
 end
 
 local function stealgokart()
-    local oldcframeis = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
-    if game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Config.Type.Value == "Gokart" then
-        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame
-        task.wait(0.5)
-        fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].DriveSeat.Prompt, 50)
-        local main = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass
-        for i = 1,4 do
+    local oldcframe = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+    if game:GetService("Workspace").PlayerVehicles:FindFirstChild("Vehicle_"..game:GetService("Players").LocalPlayer.Name) then
+        
+        if game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Config.Type.Value == "Gokart" then
+            
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame
+            fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].DriveSeat.Prompt, 500)
             task.wait(0.5)
-            main.CFrame = oldcframeis
+            game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame = oldcframe
+        else
+            
+            repeat task.wait()
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.CFrame + Vector3.new(0, 2.5, 0)
+            until game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.BillboardGui.Countdown.Text == "Get ready!" or game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.BillboardGui.Countdown.Text == "Race in progress"
+            task.wait(2.5)
+            
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame
+            fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_hr6fu56ruhyrd56"].DriveSeat.Prompt, 500)
+            task.wait(0.5)
+            game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame = oldcframe
         end
     else
-        repeat
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.CFrame + Vector3.new(0, 4, 0)
-            task.wait()
+        
+        repeat task.wait()
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.CFrame + Vector3.new(0, 2.5, 0)
         until game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.BillboardGui.Countdown.Text == "Get ready!" or game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.BillboardGui.Countdown.Text == "Race in progress"
         task.wait(2.5)
+        
         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame
+        fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_hr6fu56ruhyrd56"].DriveSeat.Prompt, 500)
         task.wait(0.5)
-        fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].DriveSeat.Prompt, 50)
-        repeat task.wait(0.1) until game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.LapCounter.SurfaceGui.TrackNumber.Text == "GO"
-        task.wait(2.5)
-        game:GetService("ReplicatedStorage").Remotes.ChangeSetting:FireServer("Suspension", false)
-        game.StarterGui:SetCore("ChatMakeSystemMessage", {Text = "[clock.lua] If the gokart gets stuck, please disable suspension.", Color = Color3.fromRGB( 255,0,0 ), Font = Enum.Font.Arial, FontSize = Enum.FontSize.Size24})
-        local main = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass
-        for i = 1,4 do
-            task.wait(0.5)
-            main.CFrame = oldcframeis
-        end
+        game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame = oldcframe
     end
 end
 
