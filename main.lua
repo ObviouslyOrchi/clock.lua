@@ -1,7 +1,4 @@
 if not getgenv().LoadedFromLoader then game:GetService("Players").LocalPlayer:Kick("Please use the loader instead of the main script, thanks. .gg/GPVqBUmPb3") end
-if not syn and is_sirhurt_closure then
-    game:GetService("Players").LocalPlayer:Kick("Please use a supported executor, thanks. .gg/GPVqBUmPb3")
-end
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
 
 local StoreRemote = game:GetService("ReplicatedStorage").Remotes.SetStoreColor
