@@ -1,4 +1,4 @@
-if not getgenv().MTAPIMutex then game:GetService("Players").LocalPlayer:Kick("Please use the loader instead of the main script, thanks. .gg/GPVqBUmPb3") end
+if not getgenv().LoadedFromLoader then game:GetService("Players").LocalPlayer:Kick("Please use the loader instead of the main script, thanks. .gg/GPVqBUmPb3") end
 if not syn and is_sirhurt_closure then
     game:GetService("Players").LocalPlayer:Kick("Please use a supported executor, thanks. .gg/GPVqBUmPb3")
 end
