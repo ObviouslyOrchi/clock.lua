@@ -157,35 +157,35 @@ local function carteleporting(placename)
 end
 
 local function tptoregisters()
-    for i,v in pairs(game:GetService("Workspace").Map.Plots[tostring(getrenv()._G.Plot)].Objects:FindFirstChild("Floor_1"):GetChildren()) do
-        if v.Name == "DeluxeCheckout" or v.Name == "BasicCheckout" then
-            if v.Object.Light.BrickColor == BrickColor.new("Really red") then
-                v.CheckoutOpen.Value = true
-                if game:GetService("Players").LocalPlayer.Character.Humanoid.Sit == true then
-                    game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    if game:GetService("Workspace").Map.Plots[tostring(getrenv()._G.Plot)].Objects:FindFirstChild("Floor_1") then
+        for i,v in pairs(game:GetService("Workspace").Map.Plots[tostring(getrenv()._G.Plot)].Objects["Floor_1"]:GetChildren()) do
+            if v.Name == "BasicCheckout" or v.Name == "DeluxeCheckout" then
+                if v.Object.Light.BrickColor == BrickColor.new("Really red") then
+                    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Object.CashierArea.CFrame + Vector3.new(0, 2.65, 0)
+                    local elapsedTime = 0;
+                    repeat
+                       if v.Object.Light.BrickColor == BrickColor.new("Lime green") then
+                           break;
+                       end
+                       elapsedTime += task.wait()
+                    until elapsedTime > 7.5
                 end
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Object.CashierArea.CFrame + Vector3.new(0, 2.5, 0)
-                repeat task.wait()
-                    if v.Object.Light.BrickColor == BrickColor.new("Lime green") then
-                        break
-                    end
-                until wait(6)
             end
         end
     end
-    for i,v in pairs(game:GetService("Workspace").Map.Plots[tostring(getrenv()._G.Plot)].Objects:FindFirstChild("Floor_2"):GetChildren()) do
-        if v.Name == "DeluxeCheckout" or v.Name == "BasicCheckout" then
-            if v.Object.Light.BrickColor == BrickColor.new("Really red") then
-                v.CheckoutOpen.Value = true
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Object.CashierArea.CFrame + Vector3.new(0, 2.5, 0)
-                if game:GetService("Players").LocalPlayer.Character.Humanoid.Sit == true then
-                    game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    if game:GetService("Workspace").Map.Plots[tostring(getrenv()._G.Plot)].Objects:FindFirstChild("Floor_2") then
+        for i,v in pairs(game:GetService("Workspace").Map.Plots[tostring(getrenv()._G.Plot)].Objects["Floor_2"]:GetChildren()) do
+            if v.Name == "BasicCheckout" or v.Name == "DeluxeCheckout" then
+                if v.Object.Light.BrickColor == BrickColor.new("Really red") then
+                    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Object.CashierArea.CFrame + Vector3.new(0, 2.65, 0)
+                    local elapsedTime = 0;
+                    repeat
+                       if v.Object.Light.BrickColor == BrickColor.new("Lime green") then
+                           break;
+                       end
+                       elapsedTime += task.wait()
+                    until elapsedTime > 7.5
                 end
-                repeat task.wait()
-                    if v.Object.Light.BrickColor == BrickColor.new("Lime green") then
-                        break
-                    end
-                until wait(6)
             end
         end
     end
