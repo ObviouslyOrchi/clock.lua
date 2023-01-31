@@ -1,18 +1,20 @@
 getgenv().LoadedFromLoader = true
-local original;
-original = hookmetamethod(game:GetService("Players").LocalPlayer.Character.Humanoid, "__index", function(self, index)
-    if original(self, "Name") == "Humanoid" and index == "WalkSpeed" then
-        return 16
-    end
-    return original(self, index)
-end);
-local original;
-original = hookmetamethod(game:GetService("Players").LocalPlayer.Character.Humanoid, "__index", function(self, index)
-    if original(self, "Name") == "Humanoid" and index == "JumpPower" then
-        return 16
-    end
-    return original(self, index)
-end);
+coroutine.wrap(function()
+    local original
+    original = hookmetamethod(game:GetService("Players").LocalPlayer.Character.Humanoid, "__index", function(self, index)
+        if original(self, "Name") == "Humanoid" and index == "WalkSpeed" then
+            return 16
+        end
+        return original(self, index)
+    end)
+    local original
+    original = hookmetamethod(game:GetService("Players").LocalPlayer.Character.Humanoid, "__index", function(self, index)
+        if original(self, "Name") == "Humanoid" and index == "JumpPower" then
+            return 16
+        end
+        return original(self, index)
+    end)
+end)()
 
 game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 100
 game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = 100
