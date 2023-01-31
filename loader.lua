@@ -14,6 +14,7 @@ coroutine.wrap(function()
         end
         return original(self, index)
     end)
+    print("Initialized WalkSpeed and JumpPower bypasses.")
 end)()
 
 game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 100
