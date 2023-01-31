@@ -30,8 +30,9 @@ local function annoyfunction()
     else
         main = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass
     end
-    local goal = game:GetService("Players")[target].Character.LowerTorso
-    main.CFrame = goal.CFrame * CFrame.Angles(math.random(0.5, 2),math.random(0.5, 2),math.random(0.5, 2))
+    local goal = game:GetService("Players")[target]
+    repeat task.wait() until goal.Character
+    main.CFrame = goal.Character.LowerTorso.CFrame * CFrame.Angles(math.random(0.5, 2),math.random(0.5, 2),math.random(0.5, 2))
     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame
     fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].DriveSeat.Prompt, 10)
     if getgenv().annoytoggle == false then
@@ -101,6 +102,9 @@ local function stealgokart()
             repeat task.wait()
                 game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.CFrame + Vector3.new(0, 2.5, 0)
             until game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.BillboardGui.Countdown.Text == "Get ready!" or game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.BillboardGui.Countdown.Text == "Race in progress"
+            repeat task.wait()
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.CFrame + Vector3.new(0, 2.5, 0)
+            until game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.LapCounter.SurfaceGui.TrackNumber.Text == "GO"
             task.wait(2.5)
             
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame
@@ -113,6 +117,9 @@ local function stealgokart()
         repeat task.wait()
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.CFrame + Vector3.new(0, 2.5, 0)
         until game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.BillboardGui.Countdown.Text == "Get ready!" or game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.BillboardGui.Countdown.Text == "Race in progress"
+        repeat task.wait()
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.CFrame + Vector3.new(0, 2.5, 0)
+        until game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.LapCounter.SurfaceGui.TrackNumber.Text == "GO"
         task.wait(2.5)
         
         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame
