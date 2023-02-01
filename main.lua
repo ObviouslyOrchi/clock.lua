@@ -232,11 +232,11 @@ if getgenv().infjump == nil then
     end)
 end
 
-local Shop = Window:CreateTab("Shop")
+local Shop = Window:CreateTab("Shop", "3926307971")
 local Annoy = Window:CreateTab("Annoy")
 local Gokart = Window:CreateTab("Gokart")
-local Carmods = Window:CreateTab("Car mods")
-local LocalPlayer = Window:CreateTab("Localplayer")
+local Carmods = Window:CreateTab("Car mods", "3926305904")
+local LocalPlayer = Window:CreateTab("Localplayer", "3926305904")
 local Misc = Window:CreateTab("Misc")
 Shop:CreateSection("Really simple autobuy.")
 Annoy:CreateSection("Annoy players with the use of your car.")
