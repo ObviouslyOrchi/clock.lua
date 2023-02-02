@@ -1,6 +1,6 @@
 getgenv().fromloader = true
 
-if not newcclosure or getrawmetatable or setreadonly then
+if not newcclosure or getrawmetatable or setreadonly or fireproximityprompt or firetouchinterest then
     game:GetService("Players").LocalPlayer:Kick("get a better executor pooron")
 end
 if not getgenv().alreadybypassed then
