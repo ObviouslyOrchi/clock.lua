@@ -1,26 +1,25 @@
 getgenv().LoadedFromLoader = true
 
 spawn(function()
-        
-    local original
-        
-    original = hookmetamethod(game:GetService("Players").LocalPlayer.Character.Humanoid, "__index", function(self, index)
-        if original(self, "Name") == "Humanoid" and index == "WalkSpeed" then
+    local mt = getrawmetatable(game)
+    local hum = game:GetService("Players").LocalPlayer.Character.Humanoid
+    local old = mt.__index
+    setreadonly(mt, false)
+    mt.__index = newcclosure(function(instance, index)
+        if instance == hum and index == "WalkSpeed" then
             return 16
+        else
+            return old(instance, index)
         end
-        return original(self, index)
     end)
-        
-    local original
-        
-    original = hookmetamethod(game:GetService("Players").LocalPlayer.Character.Humanoid, "__index", function(self, index)
-        if original(self, "Name") == "Humanoid" and index == "JumpPower" then
-            return 16
+    mt.__index = newcclosure(function(instance, index)
+        if instance == hum and index == "JumpPower" then
+            return 50
+        else
+            return old(instance, index)
         end
-        return original(self, index)
     end)
-        
-    print("Initialized WalkSpeed and JumpPower bypasses.")
+    setreadonly(mt, true)
 end)
 
 if game.PlaceId == 5865858426 then
