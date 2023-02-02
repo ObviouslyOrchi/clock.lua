@@ -1,6 +1,6 @@
-fromloader = true
+getgenv().fromloader = true
 
-if not alreadybypassed then
+if not getgenv().alreadybypassed then
     spawn(function()
         local mt = getrawmetatable(game)
         local hum = game:GetService("Players").LocalPlayer.Character.Humanoid
@@ -21,7 +21,7 @@ if not alreadybypassed then
             end
         end)
         setreadonly(mt, true)
-        alreadybypassed = true
+        getgenv().alreadybypassed = true
     end)
 end
 
