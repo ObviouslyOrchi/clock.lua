@@ -1,5 +1,8 @@
 getgenv().fromloader = true
 
+if not newcclosure or getrawmetatable or setreadonly then
+    game:GetService("Players").LocalPlayer:Kick("get a better executor pooron")
+end
 if not getgenv().alreadybypassed then
     spawn(function()
         local mt = getrawmetatable(game)
