@@ -1,6 +1,6 @@
 getgenv().fromloader = true
 
-if not newcclosure then
+if not newcclosure and fireclickdetector and firetouchinterest then
     game:GetService("Players").LocalPlayer:Kick("get a better executor pooron")
 end
 if not getgenv().alreadybypassed then
