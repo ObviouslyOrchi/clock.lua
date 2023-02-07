@@ -2,7 +2,7 @@ if not getgenv().fromloader then game:GetService("Players").LocalPlayer:Kick("Pl
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "clock.lua | Misc | .gg/GPVqBUmPb3",
+   Name = "clock.lua | universal | .gg/GPVqBUmPb3",
    LoadingTitle = "clock.lua",
    LoadingSubtitle = "by tokken?#6694",
 })
@@ -31,26 +31,26 @@ function removech()
 	end
 end
 
-local Main = Window:CreateTab("Main")
-Main:CreateSection("Put body type to 100% in avatar settings, won't work if the game doesn't support body type.")
+local Bodyexpander = Window:CreateTab("Body Expander")
+Bodyexpander:CreateSection("Put body type to 100% in avatar settings, won't work if the game doesn't support body type.")
 
-Main:CreateButton({Name = "Expand BodyProportionScale",Interact = "Button",Callback = function()
+Bodyexpander:CreateButton({Name = "Expand BodyProportionScale",Interact = "Button",Callback = function()
     removech()
     game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
 end})
-Main:CreateButton({Name = "Expand BodyHeightScale",Interact = "Button",Callback = function()
+Bodyexpander:CreateButton({Name = "Expand HeadScale",Interact = "Button",Callback = function()
     removech()
-    game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
+    game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild("HeadScale"):Destroy()
 end})
-Main:CreateButton({Name = "Expand BodyWidthScale",Interact = "Button",Callback = function()
+Bodyexpander:CreateButton({Name = "Expand BodyWidthScale",Interact = "Button",Callback = function()
     removech()
 game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild("BodyWidthScale"):Destroy()
 end})
-Main:CreateButton({Name = "Expand BodyDepthScale",Interact = "Button",Callback = function()
+Bodyexpander:CreateButton({Name = "Expand BodyDepthScale",Interact = "Button",Callback = function()
     removech()
     game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild("BodyDepthScale"):Destroy()
 end})
-Main:CreateButton({Name = "Expand HeadScale",Interact = "Button",Callback = function()
+Bodyexpander:CreateButton({Name = "Expand BodyHeightScale",Interact = "Button",Callback = function()
     removech()
-    game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild("HeadScale"):Destroy()
+    game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
 end})
