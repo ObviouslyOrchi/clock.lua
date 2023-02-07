@@ -29,7 +29,7 @@ if not getgenv().alreadybypassed then
 end
 
 if game.PlaceId == 5865858426 then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tokkenik/clock.lua/main/main.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tokkenik/clock.lua/main/rt2.lua"))()
 else
-    game:GetService("Players").LocalPlayer:Kick("Game not supported.")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tokkenik/clock.lua/main/misc.lua"))()
 end
