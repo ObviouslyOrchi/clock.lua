@@ -32,6 +32,7 @@ function removech()
 end
 
 local Main = Window:CreateTab("Main")
+Main:CreateSection("Put body type to 100% in avatar settings, won't work if the game doesn't support body type.")
 
 Main:CreateButton({Name = "Expand BodyProportionScale",Interact = "Button",Callback = function()
     removech()
