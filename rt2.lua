@@ -122,7 +122,7 @@ local function stealgokart()
             task.wait(2.5)
             
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame
-            fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_hr6fu56ruhyrd56"].DriveSeat.Prompt, 500)
+            fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].DriveSeat.Prompt, 500)
             task.wait(0.5)
             game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame = oldcframe + Vector3.new(0, 1, 0)
         end
@@ -137,7 +137,7 @@ local function stealgokart()
         task.wait(2.5)
         
         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame
-        fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_hr6fu56ruhyrd56"].DriveSeat.Prompt, 500)
+        fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].DriveSeat.Prompt, 500)
         task.wait(0.5)
         game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame = oldcframe + Vector3.new(0, 1, 0)
     end
