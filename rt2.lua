@@ -1,11 +1,23 @@
-if not getgenv().fromloader then game:GetService("Players").LocalPlayer:Kick("Please use the loader instead of the main script, thanks. .gg/GPVqBUmPb3") end
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
+
+local isholidayevent = false
+
+if game:GetService("ReplicatedStorage").Version.Value == "1.7.4" then
+    loadingtitletext = "clock.lua | latest version | .gg/GPVqBUmPb3"
+else
+    loadingtitletext = "clock.lua | not updated to latest | .gg/GPVqBUmPb3"
+end
+
+game:GetService("Players").LocalPlayer.PlayerGui.LagScript.Disabled = true
+game:GetService("Players").LocalPlayer.PlayerGui.FpsGui.FpsScript.Disabled = true
+game:GetService("Players").LocalPlayer.PlayerGui.FpsGui.Fps.Text = "60"
+game:GetService("Players").LocalPlayer.PlayerGui.FpsGui.Physics.Text = "60"
 
 local StoreRemote = game:GetService("ReplicatedStorage").Remotes.SetStoreColor
 local Players = game:GetService("Players")
 local LocalPlayer = Game:GetService("Players").LocalPlayer
 local Window = Rayfield:CreateWindow({
-   Name = "clock.lua | rt2 | .gg/GPVqBUmPb3",
+   Name = loadingtitletext,
    LoadingTitle = "clock.lua",
    LoadingSubtitle = "by tokken?#6694",
 })
@@ -50,6 +62,8 @@ local function rainbowfunction()
     rainbowisrunning = false
 end
 
+gokartlaps = 4
+gokarttime = 0.01
 local function startgokart()
     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Landmarks.GokartTrack.Scripted.Queue.Region.CFrame + Vector3.new(0, 5, 0)
 
@@ -232,11 +246,36 @@ if getgenv().infjump == nil then
     end)
 end
 
-local Shop = Window:CreateTab("Shop", 3926307971)
+if isholidayevent == true then
+    local function collectholiday()
+        local pos = game:GetService("Workspace").Map.Holiday.Markers:GetChildren()
+        for i, v in pairs(pos) do task.wait()
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+            if getgenv().farmholiday == false then
+                break
+            end
+        end
+    end
+    local Holiday = Window:CreateTab("Holiday")
+    Holiday:CreateSection("Collect stuff for the holiday event!")
+    Holiday:CreateToggle({Name = "Collect Holiday Stuff",CurrentValue = false,Callback = function(Value)
+        getgenv().farmholiday = Value
+        local oldpos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+        while getgenv().farmholiday == true do
+            local success,errString = pcall(collectholiday)
+            if errString ~= nil then
+                print("[clock.lua] Did the script run fully:",success,"  Error:" , errString)
+            end
+        end
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = oldpos
+    end})
+end
+
+local Shop = Window:CreateTab("Shop")
 local Annoy = Window:CreateTab("Annoy")
 local Gokart = Window:CreateTab("Gokart")
 local Carmods = Window:CreateTab("Car mods")
-local LocalPlayer = Window:CreateTab("Localplayer", 3926305904)
+local LocalPlayer = Window:CreateTab("Localplayer")
 local Misc = Window:CreateTab("Misc")
 Shop:CreateSection("Really simple autobuy.")
 Annoy:CreateSection("Annoy players with the use of your car.")
@@ -346,12 +385,10 @@ end})
 
 -- Gokart
 
-gokarttime = Value
 Gokart:CreateSlider({Name = "Time Between Checkpoints",Range = {0, 1},Increment = 0.01,CurrentValue = 0.01,Callback = function(Value)
     gokarttime = Value
 end})
 
-gokartlaps = Value
 Gokart:CreateSlider({Name = "How Much Laps",Range = {0, 100},Increment = 1,CurrentValue = 4,Callback = function(Value)
     gokartlaps = Value
 end})
@@ -434,10 +471,20 @@ end
 
 LocalPlayer:CreateSlider({Name = "Walk Speed",Range = {0, 100},Increment = 1,CurrentValue = 16,Callback = function(Value)
     game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    if game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower == 50 and game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed == 16 then
+        game:GetService("Players").LocalPlayer.Backpack.Sprint.Disabled = false
+    else
+        game:GetService("Players").LocalPlayer.Backpack.Sprint.Disabled = true
+    end
 end})
 
 LocalPlayer:CreateSlider({Name = "Jump Power",Range = {0, 100},Increment = 1,CurrentValue = 50,Callback = function(Value)
     game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = Value
+    if game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower == 50 and game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed == 16 then
+        game:GetService("Players").LocalPlayer.Backpack.Sprint.Disabled = false
+    else
+        game:GetService("Players").LocalPlayer.Backpack.Sprint.Disabled = true
+    end
 end})
 
 LocalPlayer:CreateSlider({Name = "Gravity",Range = {0, 196.2},Increment = 0.2,CurrentValue = 196.2,Callback = function(Value)
