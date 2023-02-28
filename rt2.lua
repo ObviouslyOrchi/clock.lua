@@ -215,7 +215,6 @@ end
 local function cleanthestore()
     for i,v in pairs(game:GetService("Workspace").Map.Plots[tostring(getrenv()._G.Plot)].Trash:GetChildren()) do
         local origpos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
-        task.wait(0.25)
         repeat
             if game:GetService("Players").LocalPlayer.Character.Humanoid.Sit == true then
                 game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
@@ -225,7 +224,7 @@ local function cleanthestore()
             task.wait()
         until not v:FindFirstChild("PromptPart")
         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = origpos
-        task.wait(0.5)
+        task.wait()
     end
 end
 
@@ -543,6 +542,36 @@ Misc:CreateToggle({Name = "Farm Distance Driven",CurrentValue = false,Callback =
     while getgenv().distancedriven == true do
         game:GetService("ReplicatedStorage").Remotes.IncrementDistanceDriven:FireServer(309.26824951171875 + math.random(-100, 100))
         task.wait()
+    end
+end})
+
+Misc:CreateButton({Name = "Fps Booster",Interact = "Button",Callback = function()
+    game.Lighting.GlobalShadows = false
+    game.Lighting.FogEnd = (9e9 * 9e9)
+    sethiddenproperty(game.Lighting, "Technology", 0)
+    settings().Rendering.QualityLevel = "Automatic"
+    for i, v in pairs(game:GetDescendants()) do
+        if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") or v:IsA("UnionOperation") or v:IsA("WedgePart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+        elseif v:IsA("Decal") or v:IsA("Texture") then
+            v:Remove()
+        elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+            v.Lifetime = NumberRange.new(0)
+        elseif v:IsA("Explosion") then
+            v.BlastPressure = 1
+            v.BlastRadius = 1
+        elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") then
+            v:Remove()
+        elseif v:IsA("MeshPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+            v.TextureID = 0
+        elseif v:IsA("Terrain") then
+            v.Transparency = 1
+        elseif v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
+            v.Enabled = false
+        end
     end
 end})
 
