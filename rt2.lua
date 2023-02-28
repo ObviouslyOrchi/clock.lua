@@ -44,7 +44,7 @@ local function annoyfunction()
     end
     local goal = game:GetService("Players")[target]
     repeat task.wait() until goal.Character
-    main.CFrame = goal.Character.LowerTorso.CFrame * CFrame.Angles(math.random(0.5, 2),math.random(0.5, 2),math.random(0.5, 2))
+    main.CFrame = (goal.Character.LowerTorso.CFrame * CFrame.Angles(math.random(0.5, 2),math.random(0.5, 2),math.random(0.5, 2)))
     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].Mass.CFrame
     fireproximityprompt(game:GetService("Workspace").PlayerVehicles["Vehicle_"..game:GetService("Players").LocalPlayer.Name].DriveSeat.Prompt, 10)
     if getgenv().annoytoggle == false then
